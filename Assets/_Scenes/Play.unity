@@ -1192,6 +1192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1677988128}
   - component: {fileID: 1677988129}
+  - component: {fileID: 1677988130}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1229,6 +1230,21 @@ MonoBehaviour:
   scoreLabel: {fileID: 1565216559}
   livesLabel: {fileID: 375923141}
   sceneLabel: {fileID: 196391710}
+--- !u!114 &1677988130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677988127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 728cc2ba18403124782e646b456d8d0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyPool
+  enemyPrefab: {fileID: 3263980354285613431, guid: ce31cc489460ef94db296c4eecf0d761, type: 3}
+  poolSize: 5
+  spawnInterval: 1.5
 --- !u!1 &1877048699
 GameObject:
   m_ObjectHideFlags: 0
