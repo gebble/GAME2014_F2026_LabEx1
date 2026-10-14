@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -14,11 +12,25 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private TMP_Text sceneLabel;
 
-    // Update is called once per frame
-    void Update()
+    private ScreenOrientation lastOrientation;
+
+    void Start()
     {
+        // Run once at startup
+        lastOrientation = Screen.orientation;
         MoveLabelsToSafeArea();
         CheckOrientation();
+    }
+
+    void Update()
+    {
+        // ONLY recalculate UI when the screen orientation actually changes!
+        if (Screen.orientation != lastOrientation)
+        {
+            lastOrientation = Screen.orientation;
+            MoveLabelsToSafeArea();
+            CheckOrientation();
+        }
     }
 
     private void MoveLabelsToSafeArea()
@@ -29,13 +41,11 @@ public class GameController : MonoBehaviour
         float livesLabelHalfWidth = livesLabel.rectTransform.rect.width * 0.5f;
         float livesLabelHalfHeight = livesLabel.rectTransform.rect.height * 0.5f;
 
-        // Place Score Label in the Top-Left of the Safe Area
         scoreLabel.rectTransform.position = new Vector2(
             Screen.safeArea.xMin + scoreLabelHalfWidth,
             Screen.safeArea.yMax - scoreLabelHalfHeight
         );
 
-        // Place Lives Label in the Top-Right of the Safe Area
         livesLabel.rectTransform.position = new Vector2(
             Screen.safeArea.xMax - livesLabelHalfWidth,
             Screen.safeArea.yMax - livesLabelHalfHeight
